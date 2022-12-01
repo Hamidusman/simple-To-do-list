@@ -1,0 +1,26 @@
+<h1>Hello World</h1>
+
+<P>Make a to-do list</P>
+
+
+<ul>
+    <div class="items">
+        
+    {% for item in all_items %}
+    <li>{{item.content}}</li>
+    <form class="list" action="/deleteTodo/{{item.id}}/" method="post"
+            style="display: inline;" >
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    
+    {% endfor %}
+    </div>
+</ul>
+
+<form action="/addTodo/" method="POST">
+    {% csrf_token %}
+    <input type="text" name="content" placeholder="Type here">
+    <input value="save" type="submit">
+</form>
+
